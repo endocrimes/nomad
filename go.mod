@@ -35,7 +35,7 @@ require (
 	github.com/elazarl/go-bindata-assetfs v1.0.1
 	github.com/fsouza/go-dockerclient v1.7.9
 	github.com/golang-jwt/jwt/v5 v5.0.0
-	github.com/golang/protobuf v1.5.2
+	github.com/golang/protobuf v1.5.3
 	github.com/golang/snappy v0.0.4
 	github.com/google/go-cmp v0.5.9
 	github.com/gorilla/handlers v1.5.1
@@ -105,8 +105,8 @@ require (
 	github.com/opencontainers/runc v1.1.8
 	github.com/opencontainers/runtime-spec v1.1.0-rc.3
 	github.com/posener/complete v1.2.3
-	github.com/prometheus/client_golang v1.14.0
-	github.com/prometheus/common v0.39.0
+	github.com/prometheus/client_golang v1.15.1
+	github.com/prometheus/common v0.44.0
 	github.com/rs/cors v1.8.3
 	github.com/ryanuber/columnize v2.1.2+incompatible
 	github.com/ryanuber/go-glob v1.0.0
@@ -243,8 +243,8 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/power-devops/perfstat v0.0.0-20210106213030-5aafc221ea8c // indirect
-	github.com/prometheus/client_model v0.3.0 // indirect
-	github.com/prometheus/procfs v0.8.0 // indirect
+	github.com/prometheus/client_model v0.4.0 // indirect
+	github.com/prometheus/procfs v0.9.0 // indirect
 	github.com/renier/xmlrpc v0.0.0-20170708154548-ce4a1a486c03 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/rogpeppe/go-internal v1.10.0 // indirect
@@ -270,7 +270,7 @@ require (
 	go.opencensus.io v0.24.0 // indirect
 	golang.org/x/mod v0.11.0 // indirect
 	golang.org/x/net v0.12.0 // indirect
-	golang.org/x/oauth2 v0.4.0 // indirect
+	golang.org/x/oauth2 v0.8.0 // indirect
 	golang.org/x/term v0.10.0 // indirect
 	golang.org/x/text v0.11.0 // indirect
 	golang.org/x/tools v0.6.0 // indirect
