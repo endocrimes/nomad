@@ -45,7 +45,7 @@ require (
 	github.com/hashicorp/cap v0.2.0
 	github.com/hashicorp/consul-template v0.31.0
 	github.com/hashicorp/consul/api v1.23.0
-	github.com/hashicorp/consul/sdk v0.14.0
+	github.com/hashicorp/consul/sdk v0.14.1
 	github.com/hashicorp/cronexpr v1.1.2
 	github.com/hashicorp/go-bexpr v0.1.12
 	github.com/hashicorp/go-checkpoint v0.0.0-20171009173528-1545e56e46de
