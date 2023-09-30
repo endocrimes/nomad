@@ -38,6 +38,7 @@ jobs:
         run: |-
           echo "Building with Go $(cat .go-version)"
           echo "go-version=$(cat .go-version)" >> "$GITHUB_OUTPUT"
+
   get-product-version:
     runs-on: ubuntu-20.04
     outputs:
@@ -51,6 +52,7 @@ jobs:
         run: |-
           make version
           echo "product-version=$(make version)" >> "$GITHUB_OUTPUT"
+
   generate-metadata-file:
     needs: get-product-version
     runs-on: ubuntu-20.04
@@ -67,7 +69,7 @@ jobs:
         with:
           version: ${{ needs.get-product-version.outputs.product-version }}
           product: ${{ env.PKG_NAME }}
-          repositoryOwner: "hashicorp"
+          repositoryOwner: "endocrimes"
           sha: ${{ github.event.inputs.build-ref }}
       - uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce # v3.1.2
         with:
@@ -76,7 +78,7 @@ jobs:
 
   build-other:
     needs: [get-go-version, get-product-version]
-    runs-on: [ custom, linux, xxl, 20.04 ]
+    runs-on: [ "ubuntu-22.04" ]
     strategy:
       matrix:
         goos: [windows]
@@ -128,7 +130,7 @@ jobs:
 
   build-linux:
     needs: [get-go-version, get-product-version]
-    runs-on: [ custom, linux, xxl, 20.04 ]
+    runs-on: [ "ubuntu-22.04" ]
     strategy:
       matrix:
         goos: [linux]
@@ -205,8 +207,8 @@ jobs:
           description: "Nomad is an easy-to-use, flexible, and performant workload orchestrator that can deploy a mix of microservice, batch, containerized, and non-containerized applications."
           arch: ${{ matrix.goarch }}
           version: ${{ needs.get-product-version.outputs.product-version }}
-          maintainer: "HashiCorp"
-          homepage: "https://github.com/hashicorp/nomad"
+          maintainer: "endocrimes"
+          homepage: "https://github.com/endocrimes/nomad"
           license: "MPL-2.0"
           binary: "pkg/${{ matrix.goos }}_${{ matrix.goarch }}/${{ env.PKG_NAME }}"
           deb_depends: "openssl"
@@ -233,7 +235,7 @@ jobs:
 
   build-darwin:
     needs: [get-go-version, get-product-version]
-    runs-on: ${{ endsWith(github.repository, '-enterprise') && fromJSON('["self-hosted", "ondemand", "macos"]') || 'macos-latest' }}
+    runs-on: "macos-latest"
     strategy:
       matrix:
         goos: [darwin]
@@ -246,14 +248,6 @@ jobs:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
         with:
           ref: ${{ github.event.inputs.build-ref }}
-
-      - uses: ./.github/actions/vault-secrets
-        with:
-          paths: |-
-            kv/data/github/hashicorp/nomad-enterprise/gha ELEVATED_GITHUB_TOKEN ;
-      - name: Git config token
-        if: endsWith(github.repository, '-enterprise')
-        run: git config --global url.'https://${{ env.ELEVATED_GITHUB_TOKEN }}@github.com'.insteadOf 'https://github.com'
 
       - name: Setup go
         uses: actions/setup-go@fac708d6674e30b6ba41289acaab6d4b75aa0753 # v4.0.1
@@ -297,7 +291,7 @@ jobs:
     needs:
       - get-product-version
       - build-linux
-    runs-on: [ custom, linux, xxl, 20.04 ]
+    runs-on: [ "ubuntu-latest" ]
     strategy:
       matrix:
         arch: ["arm64", "amd64"]
@@ -325,10 +319,10 @@ jobs:
           target: release
           arch: ${{matrix.arch}}
           tags: |
-            docker.io/hashicorp/${{env.PKG_NAME}}:${{env.version}}
+            ghcr.io/endocrimes/${{env.PKG_NAME}}:${{env.version}}
           dev_tags: |
-            docker.io/hashicorppreview/${{ env.PKG_NAME }}:${{ env.version }}-dev
-            docker.io/hashicorppreview/${{ env.PKG_NAME }}:${{ env.version }}-${{env.revision}}
+            ghcr.io/endocrimes/${{ env.PKG_NAME }}:${{ env.version }}-dev
+            ghcr.io/endocrimes/${{ env.PKG_NAME }}:${{ env.version }}-${{env.revision}}
 
   minimum-os:
     name: OS Compatibility
