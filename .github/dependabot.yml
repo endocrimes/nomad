@@ -32,8 +32,6 @@ updates:
       interval: "weekly"
       day: "sunday"
       time: "09:00"
-    assignees:
-      - "@hashicorp/web-platform"
     labels:
       - "theme/dependencies"
       - "theme/website"
