@@ -124,7 +124,7 @@ require (
 	golang.org/x/crypto v0.11.0
 	golang.org/x/exp v0.0.0-20230728194245-b0cb94b80691
 	golang.org/x/sync v0.2.0
-	golang.org/x/sys v0.10.0
+	golang.org/x/sys v0.12.0
 	golang.org/x/time v0.3.0
 	google.golang.org/grpc v1.53.0
 	google.golang.org/protobuf v1.30.0
