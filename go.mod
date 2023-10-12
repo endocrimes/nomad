@@ -25,7 +25,7 @@ require (
 	github.com/containerd/go-cni v1.1.9
 	github.com/containernetworking/cni v1.1.2
 	github.com/containernetworking/plugins v1.2.0
-	github.com/coreos/go-iptables v0.6.0
+	github.com/coreos/go-iptables v0.7.0
 	github.com/creack/pty v1.1.18
 	github.com/docker/cli v23.0.1+incompatible
 	github.com/docker/distribution v2.8.2+incompatible
